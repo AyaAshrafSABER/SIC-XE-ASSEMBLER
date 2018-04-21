@@ -1,0 +1,14 @@
+# depslib dependency file v1.0
+1524266994 source:/home/aya/pass1/main.cpp
+	<iostream>
+	<string.h>
+	"OperationTable.h"
+
+1524264868 /home/aya/pass1/OperationTable.h
+	"OperationInfomation.h"
+	<string>
+	<map>
+
+1524259808 /home/aya/pass1/OperationInfomation.h
+	<vector>
+
