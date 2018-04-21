@@ -6,7 +6,7 @@
 using namespace std;
 
 void GroupTable::addGroup(string groupName, int groupAddress, int groupNumber) {
-    GroupTable::toUpper(groupName);
+    toUpper(groupName);
     group_info groupInfo;
     groupInfo.address = groupAddress;
     groupInfo.number = groupNumber;
@@ -14,7 +14,7 @@ void GroupTable::addGroup(string groupName, int groupAddress, int groupNumber) {
 }
 
 int GroupTable::getGropLength(string groupName) {
-    GroupTable::toUpper(groupName);
+    toUpper(groupName);
     group_table_iterator = group_table.find(groupName);
     if (group_table_iterator != group_table.end()) {
         group_table_iterator->second.length;
@@ -23,7 +23,7 @@ int GroupTable::getGropLength(string groupName) {
 }
 
 int GroupTable::getGroupAddress(string groupName) {
-    GroupTable::toUpper(groupName);
+    toUpper(groupName);
     group_table_iterator = group_table.find(groupName);
     if (group_table_iterator != group_table.end()) {
         group_table_iterator->second.address;
@@ -32,7 +32,7 @@ int GroupTable::getGroupAddress(string groupName) {
 }
 
 void GroupTable::modifyGroup(string groupName, int groupAddress, int groupLength) {
-    GroupTable::toUpper(groupName);
+    toUpper(groupName);
     group_table_iterator = group_table.find(groupName);
     if (group_table_iterator != group_table.end()) {
         group_table_iterator->second.address = groupAddress;
@@ -41,7 +41,7 @@ void GroupTable::modifyGroup(string groupName, int groupAddress, int groupLength
 }
 
 bool GroupTable::containGroup(string groupName) {
-    GroupTable::toUpper(groupName);
+    toUpper(groupName);
     return (group_table.find(groupName) != group_table.end());
 }
 string GroupTable::toUpper(string groupName) {
