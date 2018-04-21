@@ -9,4 +9,4 @@ add_executable(pass_1
         main.cpp
         OperationInfomation.h
         OperationTable.cpp
-        OperationTable.h InstructionLine.cpp InstructionLine.h)
+        OperationTable.h src/InstructionLine.cpp include/InstructionLine.h)

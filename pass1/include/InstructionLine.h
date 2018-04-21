@@ -12,6 +12,7 @@ using namespace std;
 class InstructionLine {
 
 public:
+
     static const int TYPE_COMMENT = 0;
     static const int TYPE_WITH_LABEL = 1;
     static const int TYPE_WITH_LABEL_AND_COMMENT = 2;
@@ -26,27 +27,18 @@ public:
 
     int getType() const;
 
-    void setType(int type);
-
     const string &getLabel() const;
-
-    void setLabel(const string &label);
 
     const string &getOperation() const;
 
-    void setOperation(const string &operation);
-
     const string &getOperand() const;
 
-    void setOperand(const string &operand);
-
     const string &getComment() const;
-
-    void setComment(const string &comment);
 
     const string &getInstructionLine() const;
 
 private:
+
     const string REGEX_COMMENT_LINE = ".(\\w*\\s*)*";
     const string REGEX_COMMENT_LINE_ONLY = "^" + REGEX_COMMENT_LINE + "$";
     const string REGEX_LABEL = "^(\\s*\\w+)";
@@ -68,6 +60,17 @@ private:
     string instructionLine;
 
     void setInstructionLine(const string &instructionLine);
+
+    void setComment(const string &comment);
+
+    void setOperand(const string &operand);
+
+    void setOperation(const string &operation);
+
+    void setLabel(const string &label);
+
+    void setType(int type);
+
 };
 
 

@@ -2,7 +2,7 @@
 // Created by Bassam on 4/21/2018.
 //
 
-#include "InstructionLine.h"
+#include "include/InstructionLine.h"
 #include <utility>
 
 InstructionLine::InstructionLine(string instructionLine) {
