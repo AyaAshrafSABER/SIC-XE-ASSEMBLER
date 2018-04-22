@@ -7,6 +7,6 @@ include_directories(.)
 
 add_executable(pass_1
         main.cpp
-        OperationInfomation.h
-        OperationTable.cpp
-        OperationTable.h src/InstructionLine.cpp include/InstructionLine.h)
+        include/OperationInfomation.h
+        src/OperationTable.cpp
+        include/OperationTable.h src/InstructionLine.cpp include/InstructionLine.h)

@@ -13,17 +13,18 @@ class InstructionLine {
 
 public:
 
-    static const int TYPE_COMMENT = 0;
-    static const int TYPE_WITH_LABEL = 1;
-    static const int TYPE_WITH_LABEL_AND_COMMENT = 2;
-    static const int TYPE_WITHOUT_LABEL = 3;
-    static const int TYPE_WITHOUT_LABEL_AND_COMMENT = 4;
+    static const int TYPE_ERRONEOUS_LINE = -1;
+    static const int TYPE_COMMENT_ONLY = 1;
+    static const int TYPE_WITH_LABEL = 2;
+    static const int TYPE_WITH_LABEL_WITHOUT_OPERAND = 3;
+    static const int TYPE_WITHOUT_LABEL = 4;
+    static const int TYPE_WITHOUT_LABEL_AND_OPERAND = 5;
 
     explicit InstructionLine(string instructionLine);
 
     ~InstructionLine();
 
-    void parse(string instructionLine);
+    void parse(const string &instructionLine);
 
     int getType() const;
 
@@ -37,19 +38,31 @@ public:
 
     const string &getInstructionLine() const;
 
+    const string &getError() const;
+
 private:
 
-    const string REGEX_COMMENT_LINE = ".(\\w*\\s*)*";
-    const string REGEX_COMMENT_LINE_ONLY = "^" + REGEX_COMMENT_LINE + "$";
+    const string REGEX_COMMENT_LINE = "\\.(\\w*\\s*)*";
     const string REGEX_LABEL = "^(\\s*\\w+)";
     const string REGEX_OPERATION = "[a-zA-Z]{3,5}";
     const string REGEX_OPERAND = "\\w*";
-    const string REGEX_INSTRUCTION_WITH_LABEL = REGEX_LABEL + "\\s+" +
-                                                REGEX_OPERATION + "\\s+" +
-                                                REGEX_OPERAND + "\\s+" +
-                                                "(" + REGEX_COMMENT_LINE + "){0,1}" + "$";
-    const string REGEX_INSTRUCTION_WITHOUT_LABEL = "^(\\s*" + REGEX_OPERATION + ")" + "\\s+" +
-                                                   REGEX_OPERAND + "\\s+" +
+
+    const string REGEX_COMMENT_ONLY = "^" + REGEX_COMMENT_LINE + "$";
+
+    const string REGEX_WITH_LABEL = REGEX_LABEL + "\\s+" +
+                                    REGEX_OPERATION + "\\s+" +
+                                    REGEX_OPERAND + "\\s*" +
+                                    "(" + REGEX_COMMENT_LINE + "){0,1}" + "$";
+
+    const string REGEX_WITH_LABEL_WITHOUT_OPERAND = REGEX_LABEL + "\\s+" +
+                                                    REGEX_OPERATION + "\\s*" +
+                                                    "(" + REGEX_COMMENT_LINE + "){0,1}" + "$";
+
+    const string REGEX_WITHOUT_LABEL = "^(\\s*" + REGEX_OPERATION + ")" + "\\s+" +
+                                       REGEX_OPERAND + "\\s*" +
+                                       "(" + REGEX_COMMENT_LINE + "){0,1}" + "$";
+
+    const string REGEX_WITHOUT_LABEL_AND_OPERAND = "^(\\s*" + REGEX_OPERATION + ")" + "\\s*" +
                                                    "(" + REGEX_COMMENT_LINE + "){0,1}" + "$";
 
     int type;
@@ -58,6 +71,7 @@ private:
     string operand;
     string comment;
     string instructionLine;
+    string error;
 
     void setInstructionLine(const string &instructionLine);
 
@@ -71,6 +85,25 @@ private:
 
     void setType(int type);
 
+    void setError(const string &error);
+
+    void extractData();
+
+    void defineType();
+
+    const string &getLabel(const string &instructionLine);
+
+    const string &getOperation(const string &instructionLine);
+
+    const string &getOperand(const string &instructionLine);
+
+    const string &getComment(const string &instructionLine);
+
+    bool isValidLabel(const string &label);
+
+    bool isValidOperation(const string &operation);
+
+    bool isValidOperand(const string &operand);
 };
 
 
