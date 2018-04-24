@@ -36,34 +36,34 @@ public:
 
     const string &getComment() const;
 
-    const string &getInstructionLine() const;
+    const string &getLine() const;
 
     const string &getError() const;
 
 private:
 
     const string REGEX_COMMENT_LINE = "\\.(\\w*\\s*)*";
-    const string REGEX_LABEL = "^(\\s*\\w+)";
-    const string REGEX_OPERATION = "[a-zA-Z]{3,5}";
-    const string REGEX_OPERAND = "\\w*";
+    const string REGEX_LABEL = "^(\\s*[a-zA-Z_]\\w+)";
+    const string REGEX_OPERATION = "([a-zA-Z]{3,5})";
+    const string REGEX_OPERAND = "([\\w,+\\-*/%]*)";
 
     const string REGEX_COMMENT_ONLY = "^" + REGEX_COMMENT_LINE + "$";
 
     const string REGEX_WITH_LABEL = REGEX_LABEL + "\\s+" +
                                     REGEX_OPERATION + "\\s+" +
                                     REGEX_OPERAND + "\\s*" +
-                                    "(" + REGEX_COMMENT_LINE + "){0,1}" + "$";
+                                    "(" + REGEX_COMMENT_LINE + "$){0,1}";
 
     const string REGEX_WITH_LABEL_WITHOUT_OPERAND = REGEX_LABEL + "\\s+" +
                                                     REGEX_OPERATION + "\\s*" +
-                                                    "(" + REGEX_COMMENT_LINE + "){0,1}" + "$";
+                                                    "(" + REGEX_COMMENT_LINE + "$){0,1}";
 
     const string REGEX_WITHOUT_LABEL = "^(\\s*" + REGEX_OPERATION + ")" + "\\s+" +
                                        REGEX_OPERAND + "\\s*" +
-                                       "(" + REGEX_COMMENT_LINE + "){0,1}" + "$";
+                                       "(" + REGEX_COMMENT_LINE + "$){0,1}";
 
     const string REGEX_WITHOUT_LABEL_AND_OPERAND = "^(\\s*" + REGEX_OPERATION + ")" + "\\s*" +
-                                                   "(" + REGEX_COMMENT_LINE + "){0,1}" + "$";
+                                                   "(" + REGEX_COMMENT_LINE + "$){0,1}";
 
     int type;
     string label;
@@ -87,23 +87,17 @@ private:
 
     void setError(const string &error);
 
-    void extractData();
-
-    void defineType();
-
-    const string &getLabel(const string &instructionLine);
-
-    const string &getOperation(const string &instructionLine);
-
-    const string &getOperand(const string &instructionLine);
-
-    const string &getComment(const string &instructionLine);
-
     bool isValidLabel(const string &label);
 
     bool isValidOperation(const string &operation);
 
     bool isValidOperand(const string &operand);
+
+    string trim(const string &str);
+
+    void setProperties(const string &label, const string &operation, const string &operand, const string &comment);
+
+    void appendError(const string &errorToAppend);
 };
 
 
