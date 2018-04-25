@@ -32,6 +32,9 @@ void DirectiveTable::initDirTable() {
     dirTable.push_back("END");
     dirTable.push_back("ORG");
     dirTable.push_back("LTORG");
+    dirTable.push_back("USE");
+    dirTable.push_back("BASE");
+    dirTable.push_back("NOBASE");
 }
 
 /**
@@ -40,8 +43,7 @@ void DirectiveTable::initDirTable() {
  * @return           [True if directive table contains this directive.]
  */
 bool DirectiveTable::contains(std::string directive) {
-   it = std::find (dirTable.begin(), dirTable.end(), directive);
-    if (it != vec.end())
+    if (std::find (dirTable.begin(), dirTable.end(), directive) != dirTable.end())
     {
         return true;
     }
@@ -49,5 +51,3 @@ bool DirectiveTable::contains(std::string directive) {
     return false;
 }
 
-
-}
