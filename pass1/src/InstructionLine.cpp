@@ -62,15 +62,15 @@ void InstructionLine::parse(const string &instructionLine) {
 }
 
 bool InstructionLine::isValidLabel(const string &label) {
-    return false;
+    return true;
 }
 
 bool InstructionLine::isValidOperation(const string &operation) {
-    return false;
+    return true;
 }
 
 bool InstructionLine::isValidOperand(const string &operand) {
-    return false;
+    return true;
 }
 
 int InstructionLine::getType() const {
