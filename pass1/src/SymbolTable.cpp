@@ -10,8 +10,8 @@ using namespace std;
         symbol_info symbolInfo;
         symbolInfo.address = symbolAddress;
         symbolInfo.type = symbolType;
-        int symbolLength = SymbolTable::symbolLength(symbolName);
-        symbolInfo.length = symbolLength;
+        int symbolLen = symbolLength(symbolName);
+        symbolInfo.length = symbolLen;
         symbol_table[symbolName] = symbolInfo;
     }
 
