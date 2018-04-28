@@ -73,7 +73,7 @@ void Controller :: start()
             int operandType;
             if (type == TYPE_WITH_LABEL || type == TYPE_WITHOUT_LABEL) {
                 operandType = opValid.getOperandType(operand);
-                if (!opValid.isCompatible(operandType, operation, operand)) {
+                if (operandType == -1 || !opValid.isCompatible(operandType, operation, operand)) {
                     errorMessage = "error in operand";
                     continue;
                 }
@@ -165,7 +165,7 @@ void Controller :: start()
         }
         if (type == TYPE_WITH_LABEL || type == TYPE_WITHOUT_LABEL) {
             int operandType = opValid.getOperandType(operand);
-            if(!opValid.isCompatible(operandType, operation, operand)) {
+            if(operandType == -1 || !opValid.isCompatible(operandType, operation, operand)) {
               errorMessage("error in operand");
             }
         }
