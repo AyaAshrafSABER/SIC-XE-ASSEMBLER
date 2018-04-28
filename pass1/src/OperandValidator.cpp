@@ -133,9 +133,8 @@ bool OperandValidator::isCompatible(int operandType, string opCode, string opera
     return true;
 }
 bool OperandValidator::isNumberPositive(string operand) {
-    string positive = "^(\\d)+";
-    regex positiveInteger(positive);
-    if (regex_match(operand, positiveInteger)) {
+    int integerValue = atoi(operand.c_str())
+    if (integerValue > 0) {
         return true;
     }
     return false;
