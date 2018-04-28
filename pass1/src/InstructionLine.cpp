@@ -97,6 +97,13 @@ const string &InstructionLine::getOperation() const {
 }
 
 void InstructionLine::setOperation(const string &operation) {
+    if (operation.find('+') >= 0) {
+        setInstructionFormatType(FORMAT_THREE);
+        operation[0] = '';
+    } else {
+        setInstructionFormatType(FORMAT_FOUR);
+    }
+
     InstructionLine::operation = operation;
     if (!isValidOperation(operation)) {
         appendError("Invalid operation!");
@@ -108,6 +115,12 @@ const string &InstructionLine::getOperand() const {
 }
 
 void InstructionLine::setOperand(const string &operand) {
+    if (operand.find('=') >= 0) {
+        setOperandType(OPERAND_TYPE_LITERAL);
+        operand[0] = '';
+    } else {
+        setOperandType(OPERAND_TYPE_NON_LITERAL);
+    }
     InstructionLine::operand = operand;
     if (!isValidOperand(operand)) {
         appendError("Invalid operand!");
@@ -157,6 +170,22 @@ void InstructionLine::setProperties(const string &label, const string &operation
 
 void InstructionLine::appendError(const string &errorToAppend) {
     this->error.append("\n" + errorToAppend);
+}
+
+int InstructionLine::getInstructionFormatType() const {
+    return instructionFormatType;
+}
+
+void InstructionLine::setInstructionFormatType(int instructionFormatType) {
+    InstructionLine::instructionFormatType = instructionFormatType;
+}
+
+int InstructionLine::getOperandType() const {
+    return operandType;
+}
+
+void InstructionLine::setOperandType(int operandType) {
+    InstructionLine::operandType = operandType;
 }
 
 InstructionLine::~InstructionLine() = default;

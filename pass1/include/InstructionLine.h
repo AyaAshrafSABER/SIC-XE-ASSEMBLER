@@ -19,6 +19,10 @@ public:
     static const int TYPE_WITH_LABEL_WITHOUT_OPERAND = 3;
     static const int TYPE_WITHOUT_LABEL = 4;
     static const int TYPE_WITHOUT_LABEL_AND_OPERAND = 5;
+    static const int FORMAT_THREE = 3;
+    static const int FORMAT_FOUR = 4;
+    static const int OPERAND_TYPE_LITERAL = 0;
+    static const int OPERAND_TYPE_NON_LITERAL = 1;
 
     explicit InstructionLine(string instructionLine);
 
@@ -40,12 +44,16 @@ public:
 
     const string &getError() const;
 
+    int getInstructionFormatType() const;
+
+    int getOperandType() const;
+
 private:
 
     const string REGEX_COMMENT_LINE = "\\.(\\w*\\s*)*";
     const string REGEX_LABEL = "^(\\s*[a-zA-Z][\\w$]+)";
-    const string REGEX_OPERATION = "([a-zA-Z]{3,5})";
-    const string REGEX_OPERAND = "([\\w,+\\-*/%'=$]*)";
+    const string REGEX_OPERATION = "([+]{0,1}[a-zA-Z]{3,5})";
+    const string REGEX_OPERAND = "([=]{0,1}[\\w,+\\-*/%'$]*)";
 
     const string REGEX_COMMENT_ONLY = "^" + REGEX_COMMENT_LINE + "$";
 
@@ -66,6 +74,8 @@ private:
                                                    "(" + REGEX_COMMENT_LINE + "$){0,1}";
 
     int type;
+    int instructionFormatType;
+    int operandType;
     string label;
     string operation;
     string operand;
@@ -86,6 +96,10 @@ private:
     void setType(int type);
 
     void setError(const string &error);
+
+    void setInstructionFormatType(int instructionFormatType);
+
+    void setOperandType(int operandType);
 
     bool isValidLabel(const string &label);
 
