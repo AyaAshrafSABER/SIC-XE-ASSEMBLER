@@ -97,14 +97,16 @@ const string &InstructionLine::getOperation() const {
 }
 
 void InstructionLine::setOperation(const string &operation) {
+    string operationReduced;
     if (operation.find('+') >= 0) {
         setInstructionFormatType(FORMAT_THREE);
-        operation[0] = '';
+        operationReduced = operation.substr(1, operation.length());
     } else {
         setInstructionFormatType(FORMAT_FOUR);
+        operationReduced = operation;
     }
 
-    InstructionLine::operation = operation;
+    InstructionLine::operation = operationReduced;
     if (!isValidOperation(operation)) {
         appendError("Invalid operation!");
     }
@@ -117,7 +119,6 @@ const string &InstructionLine::getOperand() const {
 void InstructionLine::setOperand(const string &operand) {
     if (operand.find('=') >= 0) {
         setOperandType(OPERAND_TYPE_LITERAL);
-        operand[0] = '';
     } else {
         setOperandType(OPERAND_TYPE_NON_LITERAL);
     }

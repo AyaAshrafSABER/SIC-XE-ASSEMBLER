@@ -15,7 +15,7 @@ int main() {
      cout <<  OperationTable::getInstance()->getInfo("ADD").supportedFormats[0];*/
 
     InstructionLine instructionLine = InstructionLine(
-            "           LABEL      LDA       X,X             .sadsa             ");
+            "           LABEL      +LDA       =X             .sadsa             ");
     //InstructionLine instructionLine = InstructionLine("           LABEL      LDA       X   ,X             .sadsa             ");
     //InstructionLine instructionLine = InstructionLine("                 LDA       X,X             .sadsa             ");
     //InstructionLine instructionLine = InstructionLine("           LABEL      LDA                               ");
