@@ -1,5 +1,5 @@
 #include <iostream>
-#include <include/OperationTable.h>
+#include <OperationTable.h>
 #define THREE 3
 #define ONE 1
 #define TWO 2
@@ -7,6 +7,9 @@
 #define OPTIONAL 0
 #define MUST_EXIST 1
 #define NOT_EXIST -1
+#include <iostream>
+#include <map>
+#include <algorithm>
 
 OperationTable *OperationTable::instance = 0;
 
@@ -505,7 +508,12 @@ void OperationTable::initOpTable() {
 }
 
 bool OperationTable::contains(std::string operation) {
+    toUpper(&operation);
     return OperationTable::opTable.find(operation) != OperationTable::opTable.end();
+}
+
+void OperationTable::toUpper(string* operation) {
+        transform(operation->begin(), operation->end(), operation->begin(), ::toupper);
 }
 
 OperationInformation OperationTable::getInfo(std::string operation) {

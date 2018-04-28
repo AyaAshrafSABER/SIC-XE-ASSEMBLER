@@ -4,6 +4,8 @@
 #include "OperationInfomation.h"
 #include <string>
 #include <map>
+using namespace std;
+
 class OperationTable{
 public:
     static OperationTable *getInstance();
@@ -19,11 +21,13 @@ public:
     */
     OperationInformation getInfo(std::string operation);
     void test();
+    OperationTable();
 private:
+    void toUpper(string*);
     /**
     private constractor to intialize  singleton.
     **/
-    OperationTable();
+
     /**
     private object to constract static table.
     **/

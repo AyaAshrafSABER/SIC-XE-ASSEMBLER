@@ -5,17 +5,19 @@
 #include <string>
 #include <algorithm>
 
+using namespace std;
 class DirectiveTable {
 public:
     static DirectiveTable *getInstance();
 
     bool contains(std::string directive);
-
+    DirectiveTable();
 private:
+    string toUpper(string*);
     static DirectiveTable *instance;
     std::vector<std::string> dirTable;
 
-    DirectiveTable();
+
 
     void initDirTable();
 };

@@ -1,4 +1,6 @@
 #include "DirectiveTable.h"
+#include <iostream>
+#include <algorithm>
 /**
  * Singleton instance.
  */
@@ -36,6 +38,9 @@ void DirectiveTable::initDirTable() {
     dirTable.push_back("BASE");
     dirTable.push_back("NOBASE");
 }
+string DirectiveTable:: toUpper(string* symbolName) {
+        transform(symbolName->begin(), symbolName->end(), symbolName->begin(), ::toupper);
+}
 
 /**
  * Checks if directive table contains a certain directive (case insensitive).
@@ -43,6 +48,7 @@ void DirectiveTable::initDirTable() {
  * @return           [True if directive table contains this directive.]
  */
 bool DirectiveTable::contains(std::string directive) {
+    toUpper(&directive);
     if (std::find (dirTable.begin(), dirTable.end(), directive) != dirTable.end())
     {
         return true;

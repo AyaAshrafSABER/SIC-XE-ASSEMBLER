@@ -125,6 +125,9 @@ bool OperandValidator::isCompatible(int operandType, string opCode, string opera
     } else if (opCode == "BASE" && (operand != "*" && operandType != 4
                                     && operandType != 11)) {
         return false;
+    } else if (opCode == "END" && operandType != 1 && operandType != 3
+               && operandType != 4) {
+        return false;
     }
 
     return true;

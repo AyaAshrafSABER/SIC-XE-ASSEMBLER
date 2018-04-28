@@ -15,19 +15,19 @@ class SymbolTable
         /*add symbol [name, address, type]
         return error if exists
         */
-        void addSymbol(string, int, bool);
+        void addSymbol(string*, int, bool);
         //edit symbol address, type
-        void modifySymbol(string, int, bool);
+        void modifySymbol(string*, int, bool);
         //check if symbol exists
-        bool containSymbol(string);
+        bool containSymbol(string*);
 
-        int getSymbolAddress(string);
-        bool getSymbolType(string);
-        int getSymbolLength(string);
+        int getSymbolAddress(string*);
+        bool getSymbolType(string*);
+        int getSymbolLength(string*);
 
     private:
         int symbolLength(string);
-        string toUpper(string);
+        void toUpper(string*);
         //info about the symbol
         struct symbol_info {
             int address;
