@@ -15,19 +15,19 @@ int main() {
      cout <<  OperationTable::getInstance()->getInfo("ADD").supportedFormats[0];*/
 
     InstructionLine instructionLine = InstructionLine(
-            "           LABEL      +LDA       =X             .sadsa             ");
+            "DONE     END");
     //InstructionLine instructionLine = InstructionLine("           LABEL      LDA       X   ,X             .sadsa             ");
     //InstructionLine instructionLine = InstructionLine("                 LDA       X,X             .sadsa             ");
     //InstructionLine instructionLine = InstructionLine("           LABEL      LDA                               ");
     //InstructionLine instructionLine = InstructionLine("                 LDA                    .sadsa             ");
 
     cout << instructionLine.getLine() << endl;
-    cout << instructionLine.getType() << endl;
-    cout << instructionLine.getError() << endl;
-    cout << instructionLine.getLabel() << endl;
-    cout << instructionLine.getOperation() << endl;
-    cout << instructionLine.getOperand() << endl;
-    cout << instructionLine.getComment() << endl;
+    cout << "Type: " << instructionLine.getType() << endl;
+    cout << "Error: " << instructionLine.getError() << endl;
+    cout << "Label: " << instructionLine.getLabel() << endl;
+    cout << "Operation: " << instructionLine.getOperation() << endl;
+    cout << "Operand: " << instructionLine.getOperand() << endl;
+    cout << "Comment: " << instructionLine.getComment() << endl;
 
 
     return 0;

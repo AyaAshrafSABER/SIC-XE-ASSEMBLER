@@ -1,5 +1,4 @@
 #include <iostream>
-#include <OperationTable.h>
 #define THREE 3
 #define ONE 1
 #define TWO 2
@@ -7,9 +6,10 @@
 #define OPTIONAL 0
 #define MUST_EXIST 1
 #define NOT_EXIST -1
-#include <iostream>
+
 #include <map>
 #include <algorithm>
+#include <include/OperationTable.h>
 
 OperationTable *OperationTable::instance = 0;
 

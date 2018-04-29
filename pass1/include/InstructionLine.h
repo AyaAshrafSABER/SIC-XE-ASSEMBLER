@@ -51,7 +51,7 @@ public:
 private:
 
     const string REGEX_COMMENT_LINE = "\\.(\\w*\\s*)*";
-    const string REGEX_LABEL = "^(\\s*[a-zA-Z][\\w$]+)";
+    const string REGEX_LABEL = "^(\\s*[a-zA-Z][\\w]*)";
     const string REGEX_OPERATION = "([+]{0,1}[a-zA-Z]{3,5})";
     const string REGEX_OPERAND = "([=]{0,1}[\\w,+\\-*/%'$]*)";
 

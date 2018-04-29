@@ -98,11 +98,12 @@ const string &InstructionLine::getOperation() const {
 
 void InstructionLine::setOperation(const string &operation) {
     string operationReduced;
-    if (operation.find('+') >= 0) {
-        setInstructionFormatType(FORMAT_THREE);
+    int plusSignIndex = operation.find('+');
+    if (plusSignIndex >= 0) {
+        setInstructionFormatType(FORMAT_FOUR);
         operationReduced = operation.substr(1, operation.length());
     } else {
-        setInstructionFormatType(FORMAT_FOUR);
+        setInstructionFormatType(FORMAT_THREE);
         operationReduced = operation;
     }
 
